@@ -47,7 +47,7 @@
 			    <section>
 				## Who?
 				- 	 @1stvamp (twitter/github)
-				- 	 Product Engineer at ServerDensity
+				- 	 Engineer at ServerDensity
 				- 	 I release lots of open source code
 				- 	 Curate [phpweekly.info](http://phpweekly.info/)
 			    </section>
@@ -73,21 +73,22 @@
 			
 		</div>
 
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script>
 		    $(function() {
-			var count = 0;
-			$('div.reveal section').each(function(el) {
+			$('div.slides section').each(function(i, el) {
 			    el = $(el);
-			    el.addClass('slide-' + (++count));
-			    el.data('data-markdown') = null;
+			    el.addClass('slide-' + (i+1));
+			    el.attr('data-markdown', '1');
 			});
+			window.initReveal();
 		    });
 		</script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
 
 		<script>
-			
+		    window.initReveal = function() {	
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
@@ -108,7 +109,8 @@
 					{ src: '/socket.io/socket.io.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
 					{ src: 'plugin/speakernotes/client.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
 				]
-			});
+			    });
+		    };
 			
 		</script>
 

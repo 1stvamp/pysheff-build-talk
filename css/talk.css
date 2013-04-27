@@ -18,10 +18,15 @@ li, span, pre {
     font-size: 80%;
 }
 
+ul {
+    width: 50%;
+}
+
 section {
     background-repeat: no-repeat;
     background-position: left center;
     margin-top: 10%;
+    width: 100%;
 }
 
 .reveal a {

@@ -12,7 +12,7 @@ li {
     list-style-position: inside;
 }
 
-li, span, pre, h2, h3, p, ul {
+span, pre, h2, h3, p, ul {
     background-color: #fff;
     opacity: 0.75;
     font-size: 80%;
@@ -20,11 +20,12 @@ li, span, pre, h2, h3, p, ul {
 
 ul {
     width: 50%;
+    padding-left: 1em;
 }
 
 section {
     background-repeat: no-repeat;
-    background-position: -4em 0;
+    background-position: left 0;
     margin-top: 10%;
     width: 100%;
 }
@@ -40,4 +41,46 @@ section {
 
 .slide-2 {
     background-image: url('../images/westalkwho.png');
+    background-position: -3em 0;
+}
+
+.slide-3 {
+    background-image: url('../images/westalkhyperwhat.png');
+}
+
+.slide-4 {
+    background-image: url('../images/westalknoreally.png');
+}
+
+.slide-5 {
+    background-image: url('../images/westalkwhatsnew.png');
+    background-position: -3em 0;
+}
+
+.slide-6 {
+    background-image: url('../images/westalkarchi.png');
+    background-position: -3em 0;
+}
+
+.slide-7 {
+    background-image: url('../images/westalkservices.png');
+}
+
+.slide-8 {
+    background-image: url('../images/westalkapiweb.png');
+    background-position: -4em 0;
+}
+
+.slide-9 {
+    background-image: url('../images/westalkbraveworld.png');
+}
+
+.exit1 {
+    background-image: url('../images/westalkexitmob.png');
+    background-position: -3em 0;
+}
+
+.exit2 {
+    background-image: url('../images/westalkexitmoped.png');
+    background-position: -3em 0;
 }

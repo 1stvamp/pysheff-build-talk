@@ -161,15 +161,15 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script>
 			$(function() {
-			$('div.slides section').each(function(i, el) {
-				el = $(el);
-				if (el.children('section').length > 0) {
-				return true;
-				}
-				el.addClass('slide-' + (i+1));
-				el.attr('data-markdown', '1');
-			});
-			window.initReveal();
+			    $('div.slides section').each(function(i, el) {
+				    el = $(el);
+				    if (el.children('section').length > 0) {
+					return true;
+				    }
+				    el.addClass('slide-' + (i+1));
+				    el.attr('data-markdown', '1');
+			    });
+			    window.initReveal();
 			});
 		</script>
 		<script src="lib/js/head.min.js"></script>

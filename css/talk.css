@@ -12,7 +12,7 @@ li {
     list-style-position: inside;
 }
 
-li, span, pre {
+li, span, pre, h2, h3, p, ul {
     background-color: #fff;
     opacity: 0.75;
     font-size: 80%;
@@ -24,11 +24,20 @@ ul {
 
 section {
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: -4em 0;
     margin-top: 10%;
     width: 100%;
 }
 
 .reveal a {
     color: #767676 !important;
+}
+
+.slide-1 {
+    background-image: url('../images/westalkalltheway.png');
+    background-position: left center;
+}
+
+.slide-2 {
+    background-image: url('../images/westalkwho.png');
 }

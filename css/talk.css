@@ -23,6 +23,13 @@ ul {
     padding-left: 1em;
 }
 
+.reveal section img {
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
 section {
     background-repeat: no-repeat;
     background-position: left 0;
@@ -80,8 +87,25 @@ section {
     background-position: 0 -2em;
 }
 
-.slide-14 {
+.slide-15 {
     background-image: url('../images/westalkjanebutton.png');
+}
+
+.slide-17 {
+    background-image: url('../images/1sand0s.png');
+    background-position: 4em 5em;
+}
+
+.slide-18 {
+    background-image: url('../images/proxies.png');
+    background-position: 0 -2em;
+}
+
+.slide-18 pre {
+    text-align: justify;
+    margin-top: 20%;
+    margin-left: 25em;
+    width: 20em;
 }
 
 .exit1 {

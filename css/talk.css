@@ -10,6 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 
 li {
     list-style-position: inside;
+    margin-bottom: 0.8ex;
 }
 
 span, pre, h2, h3, p, ul {
@@ -102,10 +103,22 @@ section {
 }
 
 .slide-18 pre {
-    text-align: justify;
     margin-top: 20%;
     margin-left: 25em;
     width: 20em;
+}
+
+.slide-21 {
+    background-image: url('../images/westalkwebapi.png');
+    background-position: 0 3em;
+}
+
+.slide-23 {
+    background-image: url('../images/barium.jpg');
+}
+
+.slide-26 {
+    background-image: url('../images/westalkskyhooktornado.png');
 }
 
 .exit1 {

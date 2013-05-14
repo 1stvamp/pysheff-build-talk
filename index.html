@@ -145,6 +145,59 @@
 					    Content-Type: application/json
 					    Accept: ...
 				</section>
+				<section>
+					### &lt;your application code here&gt;
+				</section>
+				<section>
+					    Content-Type: application/json
+					    Content-Length: 14
+					    X-Barium: foobar
+					    Connection: close
+
+					    {"foo": "baz"}
+				</section>
+				</section>
+				<section>
+					## Sockii
+
+					* Multiple backend servers
+					* JavaScript powered frontend
+					* Authentication/Authorisation?
+					* Routing?
+					* Cross domain?
+				</section>
+				<section>
+				<section>
+					## Add a little barium
+
+					* Every external request coming in via sockii gets an `X-Barium` header
+					* Our client libraries add this header for internal requests
+					* "Unique" ID (UUID-4)
+				</section>
+				<section>
+					* Logged
+					* A single payload going through our alerting system will maintain this ID
+					* We can query for records matching it
+				</section>
+				</section>
+				<section>
+				<section>
+					## Skyhooks
+
+					* Many tasks running in a cluster, e.g. polling AWS or Rackspace
+					* Need to get a response back from a task to a connected WebSocket
+					* Webhooks to the rescue!
+				</section>
+				<section>
+					## 
+						# import requests, import pymongo
+						# setup collection etc. etc.
+						
+						hooks = webhook_collection.find({"account_id": id}) 
+						if data and len(data) > 0:
+						    for hook in hooks:
+						        requests.post(hook["url"], data) 
+				</section>
 				</section>
 					
 				<section>

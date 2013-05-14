@@ -75,6 +75,11 @@ section {
     background-image: url('../images/westalkbraveworld.png');
 }
 
+.slide-11 {
+    background-image: url('../images/westalkwhatabout.png');
+    background-position: 0 -2em;
+}
+
 .slide-14 {
     background-image: url('../images/westalkjanebutton.png');
 }

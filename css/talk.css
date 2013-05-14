@@ -92,9 +92,12 @@ section {
 .exit2 {
     background-image: url('../images/westalkexitmoped.png');
     background-position: 1000px 0;
-    -webkit-animation-duration: 6s;
+}
+
+.animate-exit2 {
+    -webkit-animation-duration: 8s;
     -webkit-animation-name: slidein;
-    -moz-animation-duration: 6s;
+    -moz-animation-duration: 8s;
     -moz-animation-name: slidein;
 }
 

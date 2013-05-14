@@ -199,6 +199,11 @@
 				]
 				});
 			};
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+			    if ($(event.currentSlide).is('.exit2')) {
+				$(event.currentSlide).addClass('animate-exit2');
+			    }
+			});
 			
 		</script>
 

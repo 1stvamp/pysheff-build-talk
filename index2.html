@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<title>It's HTTP, All The Way Down</title>
+		<title>Two point oh my!</title>
 
 		<base href="reveal.js/">
 
@@ -18,7 +18,7 @@
 		
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
-		<link rel="stylesheet" href="../css/talk.css">
+		<link rel="stylesheet" href="../css/talk2.css">
 		<link rel="stylesheet" href="../css/pdf.css", type="text/css" media="print">
 
 		<!--[if lt IE 9]>
@@ -36,7 +36,8 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-				## It's HTTP, All The Way Down
+				## Two Point Oh My!
+				### Release engineering for everyone.
 
 				Wes Mason  
 				
@@ -51,155 +52,76 @@
 				- 	 I release lots of open source code
 				- 	 Curate [phpweekly.info](http://phpweekly.info/)
 				</section>
-				<section>
-				## Hyperwhat?
-				- 	 First version of HTTP implemented by Tim Berners-Lee in 1991
-				- 	 Expanded by the HTTP WG in '95.
-				- 	 Very little has changed in **22 years**.
-				</section>
-				<section>
-				## No really, what?
-				- 	 Very simple text based protocol
-				- 	 First part contains metadata (headers)
-				- 	 Resource centric actions
-				- 	 Body can contain any kind of encoded data
-				</section>
-				<section>
-				## What's new?
-				- 	 HTTP/1.1 (1999) adds some sugar
-				- 	 New new:
-					- 	 Server Sent Events
-					- 	 WebSockets
-				- 	 New protocols:
-					- 	 SPDY
-					- 	 HTTP/2
-				</section>
-				<section>
-				## A little about our architecture 
-				-	 Service Orientated 
-				-	 Each service in it's own codebase 
-				-	 HTTP APIs  
-				-	 Their own clusters with load balancers 
-				</section>
 
 				<section>
-				## Our services 
-				-	 RESTful
-				-	 Stateless
-				-	 Mostly thinlayers
-				-	 Common documented API
-				-	 Callable from frontend  
+					###&quot;a sub-discipline in software engineering concerned with the compilation, assembly, and delivery of source code into finished products or other software components.&quot;
+				</section>
+				<section>
+				<section>
+				## But builds are for Games and kernels
+				</section>
+				<section>
+				```
+				# ruby
+				bundler install
+				```
+				</section>
+				<section>
+				```
+				# python
+				pip install . 
+				```
+				</section>
+				<section>
+				```
+				# php
+				composer.phar install
+				```
+				</section>
+				<section>
+				```
+				# Node.js
+				npm install
+				```
+				</section>
+				</section>
+				<section>
+				## Continuous integration makes my builds reliable
+				</section>
+				<section>
+				## My configuration management system deploys everything 
+				</section>
+				<section>
+				## Versions are irrelevant because I deploy continuously 
+				</section>
+				<section>
+				## Our devs know how it's built
+				</section>
+				<section>
+				## Our ops know how it's shipped 
+				</section>
+				<section>
+				## Our QA dept know how it's tested 
+				</section>
+				<section>
+				## ...and do any of them know *why*? 
+				</section>
+				<section>
+				## My build broke, but why? 
+				</section>
+				<section>
+				## Document, document, document 
+				</section>
+				<section>
+				## Automate, automate, automate... 
+				</section>
+				<section>
+				## ...but what about security? 
+				</section>
+				<section>
+				## exempli gratia 
 				</section>
 
-				<section>
-				## The web is our API
-				-	 Everything does HTTP
-				-	 REST is *great* - let's do more of this 
-				-	 Almost everything can do HTTP *asynchronously*
-				</section>
-
-				<section>
-				## Brave New (Async) World
-				-	 Longpolling, WebSockets and Server Sent Events
-				-	 UIs are **responsive** or go home 
-				-	 Libraries like socket.io and SockJS make this pretty easy for devs   
-				</section>
-
-				<section>
-				<section>
-					## Asynchronous?
-				</section>
-
-				<section>
-					## Services 
-					- 	 Non-blocking IO
-					- 	 Both client and server 
-					- 	 Multiple "workers" - scaling  
-				</section>
-
-				<section>
-					## Frontend
-					- 	 Several things 
-					- 	 Not polling for updates, "real time" 
-					- 	 Performing backend tasks without blocking the UI
-					- 	 WebWorkers  
-				</section>
-				</section>
-
-
-				<section>
-				<section>
-					## In which Jane clicks a button 
-				</section>
-				<section>
-					<img src="../images/buttonclick.png"/>
-				</section>
-				<section>
-					    $('.button').click(function() {
-							$.ajax(...);
-					    });
-				</section>
-				<section>
-					    GET /svc/users/:id
-					    Cookie: session=blah
-					    Content-Type: application/json
-					    Accept: ...
-				</section>
-				<section>
-					### &lt;your application code here&gt;
-				</section>
-				<section>
-					    Content-Type: application/json
-					    Content-Length: 14
-					    X-Barium: foobar
-					    Connection: close
-
-					    {"foo": "baz"}
-				</section>
-				</section>
-				<section>
-					## Sockii
-
-					* Multiple backend servers
-					* JavaScript powered frontend
-					* Authentication/Authorisation?
-					* Routing?
-					* Cross domain?
-				</section>
-				<section>
-				<section>
-					## Add a little barium
-
-					* Every external request coming in via sockii gets an `X-Barium` header
-					* Our client libraries add this header for internal requests
-					* "Unique" ID (UUID-4)
-				</section>
-				<section>
-					* Logged
-					* A single payload going through our alerting system will maintain this ID
-					* We can query for records matching it
-				</section>
-				</section>
-				<section>
-				<section>
-					## Skyhooks
-
-					* Many tasks running in a cluster, e.g. polling AWS or Rackspace
-					* Need to get a response back from a task to a connected WebSocket
-					* Webhooks to the rescue!
-				</section>
-				<section>
-					## 
-						# import requests, import pymongo
-						# setup collection etc. etc.
-						
-						hooks = webhook_collection.find({"account_id": id}) 
-						if data and len(data) > 0:
-						    for hook in hooks:
-						        requests.post(hook["url"], data) 
-				</section>
-				</section>
-					
 				<section>
 				<section class="exit1">
 				## sys.exit(0)

@@ -1,0 +1,85 @@
+body {
+    background: #fff;
+}
+* {
+    color: #000;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #000 !important;
+}
+
+li {
+    list-style-position: inside;
+    margin-bottom: 0.8ex;
+}
+
+span, pre, h2, h3, p, ul {
+    background-color: #fff;
+    opacity: 0.75;
+    font-size: 80%;
+}
+
+ul {
+    width: 50%;
+    padding-left: 1em;
+}
+
+.reveal section img {
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+section {
+    background-repeat: no-repeat;
+    background-position: left 0;
+    margin-top: 10%;
+    width: 100%;
+}
+
+.reveal a {
+    color: #767676 !important;
+}
+
+.slide-2 {
+    background-image: url('../images/westalkwho.png');
+    background-position: -3em 0;
+}
+
+.exit1 {
+    background-image: url('../images/westalkexitmob.png');
+    background-position: -3em 0;
+}
+
+.exit2 {
+    background-image: url('../images/westalkexitmoped.png');
+    background-position: 1000px 0;
+}
+
+.animate-exit2 {
+    -webkit-animation-duration: 8s;
+    -webkit-animation-name: slidein;
+    -moz-animation-duration: 8s;
+    -moz-animation-name: slidein;
+}
+
+@-webkit-keyframes slidein {
+  from {
+    background-position: -6em 0;
+  }
+ 
+  to {
+    background-position: 1000px 0;
+  }
+}
+
+@-moz-keyframes slidein {
+  from {
+    background-position: -6em 0;
+  }
+ 
+  to {
+    background-position: 1000px 0;
+  }
+}

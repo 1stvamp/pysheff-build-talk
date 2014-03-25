@@ -4,22 +4,20 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<title>Two point oh my!</title>
+		<title>Build pipelines, Python and You</title>
 
 		<base href="reveal.js/">
 
-		<meta name="description" content="A talk for Atmosphere 2013">
+		<meta name="description" content="A talk for Python Sheffield">
 		<meta name="author" content="Wes Mason">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-		
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 		<link rel="stylesheet" href="../css/talk2.css">
-		<link rel="stylesheet" href="../css/pdf.css", type="text/css" media="print">
+		<link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print">
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -36,21 +34,17 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-				## Two Point Oh My!
-				### Release engineering for everyone.
+				## Build pipelines, Python and You
 
 				Wes Mason  
 				
 				[@1stvamp](http://twitter.com/1stvamp)  
-				
-				[www.serverdensity.com](http://www.serverdensity.com/)  
 				</section>
 				<section>
 				## Who?
 				- 	 @1stvamp (twitter/github)
 				- 	 Engineer at ServerDensity
 				- 	 I release lots of open source code
-				- 	 Curate [phpweekly.info](http://phpweekly.info/)
 				</section>
 
 				<section>
@@ -61,28 +55,18 @@
 				## But builds are for Games and kernels
 				</section>
 				<section>
+				## Yeah?
+
 				```
-				# ruby
-				bundler install
-				```
-				</section>
-				<section>
-				```
-				# python
-				pip install . 
+				./env/bin/activate
+				pip install -r requirements.txt
 				```
 				</section>
 				<section>
-				```
-				# php
-				composer.phar install
-				```
+				## Well...
 				</section>
 				<section>
-				```
-				# Node.js
-				npm install
-				```
+				<img src="../images/error.png" width="600"/>
 				</section>
 				</section>
 				<section>
@@ -119,23 +103,146 @@
 				## Document, document, document 
 				<img src="../images/document.jpg"/>
 				</section>
+
 				<section>
-				## Automate, automate, automate... 
-				<img src="../images/hubot.jpg" width="350"/>
+				<section>
+				## Okay, so what's a build pipeline?
 				</section>
 				<section>
-				## ...but what about security? 
-				<img src="../images/bikelocks.jpg"/>
+				{Code change} / {Release}
+
+				→
+
+				Build steps
+
+				→
+
+				Package
+
 				</section>
 				<section>
-				## exempli gratia 
+				→
+
+				Asset
+
+				→
+
+				Store
+
+				→
+
+				Deploy?
+				</section>
+				<section>
+				### Build steps
+				- Build server
+				- Continuous integration
+				- Buildbot, Jenkins, Travis
+				</section>
+				<section>
+				### Buildbot
+				- Built by the Twisted guys
+				- Continuous builds
+				- Polling / events (e.g. svn-hooks, git-hooks, Github webhooks etc.)
+				- Slaves can be VMs, actual machines, local, LXCs etc.
+				- Configured via Python
+				</section>
+				<section>
+				### Travis CI
+				- Free for open source (paid version too)
+				- Configured via `.travis.yml`
+				- travis-solo
+				- buildbot-travis
+				</section>
+				<section>
+				### Jenkins
+				- Arse to setup (but so can buildbot)
+				- ShiningPanda plugin - Python builds win
+				</section>
+				<section>
+				### Automating your build
+				- `make install`
+				- No really..
+				</section>
+				<section>
+				### Buildout
+				- Created by the zope/plone guys
+				- Configured via INI files
+				- Extended via Python
+				- 1.x includes virtualenv like abilities
+				</section>
+				<section>
+				### Buildout cont.
+				- Can create self contained "packages"
+				- Install from pretty much anywhere with recipes like `buildouthttp`
+				- Non-python package builds
+				- Wrap pretty much anything
+				- `dumppickedversions`
+				</section>
+				<section>
+				### fabric
+				- Automation and deployment tool
+				- Used for deploying things via SSH
+				- Can be used for builds steps
+				- `fabtools` makes this easier
+				</section>
+				<section>
+				```
+				from fabric.api import *
+				from fabtools import require
+				import fabtools
+
+				@task
+				def setup():
+
+				    # Require some Debian/Ubuntu packages
+				    require.deb.packages([
+				        'imagemagick',
+				        'libxml2-dev',
+				        ])
+
+				    # Require a Python package
+				    with fabtools.python.virtualenv('/home/myuser/env'):
+				        require.python.package('pyramid')
+				```
+				</section>
+				<section>
+				### Virtualenvs
+				- pip is not a build tool
+				- (...but it can be, via `build` hooks in setuptools, distutils et al)
+				- `pip --list --outdated`
+				- ..also see `yolk`
+				</section>
+				<section>
+				### ..wrapping everything up..
+				- `tox` - multiple builds again different envs
+				- `dh-virtualenv`
+				- `virtualenvwrapper`
+				- `pythonbrew`
+				- `pyenv`
+				</section>
+				<section>
+				### Rockstack
+				```
+				rock build
+				rock test
+				rock run
+				```
+				</section>
+				<section>
+				### "Golden image" vs "golden package" vs "just rerun all the things"
+				- Build whole VM images
+				- ..or LXCs (`docker`)
+				- Build OS packages (`dh-virtualenv`)
+				- Build eggs, wheels, tar's
+				- ..or just let your CM handle it
+				</section>
 				</section>
 
 				<section>
 				<section class="exit1">
 				## sys.exit(0)
-				- 	 Code: [github.com/serverdensity](https://github.com/serverdensity)
-				- 	 Slides: [github.com/1stvamp/atmosphere-2013-talk](https://github.com/1stvamp/atmosphere-2013-talk)
+				- 	 Slides: [github.com/1stvamp/pysheff-build-talk](https://github.com/1stvamp/pysheff-build-talk)
 				</section>
 				<section class="exit2">
 				## ^D
@@ -158,7 +265,7 @@
 			
 		</div>
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="../lib/js/jquery.min.js"></script>
 		<script>
 			$(function() {
 			    $('div.slides section').each(function(i, el) {
